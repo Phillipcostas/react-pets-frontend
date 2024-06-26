@@ -3,12 +3,11 @@
 import { useState } from 'react';
 
 const PetForm = (props) => {
-    const initialState = {
-        name: '',
-        age: '',
-        breed: ''
-      }
-      const [formData, setFormData] = useState(props.selected ? props.selected : initialState)
+  const [formData, setFormData] = useState({
+    name: '',
+    age: '',
+    breed: '',
+  });
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -17,8 +16,7 @@ const PetForm = (props) => {
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
     props.handleAddPet(formData);
-  };
-    
+    setFormData({ name: '', age: '', breed: '' });
   };
 
   return (
@@ -46,10 +44,10 @@ const PetForm = (props) => {
           value={formData.breed}
           onChange={handleChange}
         />
-<button type="submit"> {props.selected ? 'Update Pet' : 'Add New Pet'} </button>
-</form>
+        <button type="submit">Add New Pet</button>
+      </form>
     </div>
   );
-
+};
 
 export default PetForm;
