@@ -1,4 +1,3 @@
-// src/components/PetForm.jsx
 
 import { useState } from 'react';
 
@@ -21,7 +20,7 @@ const PetForm = (props) => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmitForm}>
         <label htmlFor="name"> Name </label>
         <input
           id="name"
